@@ -1,0 +1,2185 @@
+Host: 10.10.92.222 
+ Port: 3306 
+ ====================
+
+---
+- DBName: sys
+  Tables:
+  - TableName: host_summary
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: statements
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_latency
+      ColumnType: text
+    - ColumnName: statement_avg_latency
+      ColumnType: text
+    - ColumnName: table_scans
+      ColumnType: decimal(65,0)
+    - ColumnName: file_ios
+      ColumnType: decimal(64,0)
+    - ColumnName: file_io_latency
+      ColumnType: text
+    - ColumnName: current_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: total_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: unique_users
+      ColumnType: bigint(21)
+    - ColumnName: current_memory
+      ColumnType: text
+    - ColumnName: total_memory_allocated
+      ColumnType: text
+  - TableName: host_summary_by_file_io
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: ios
+      ColumnType: decimal(42,0)
+    - ColumnName: io_latency
+      ColumnType: text
+  - TableName: host_summary_by_file_io_type
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: host_summary_by_stages
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+  - TableName: host_summary_by_statement_latency
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_examined
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_affected
+      ColumnType: decimal(42,0)
+    - ColumnName: full_scans
+      ColumnType: decimal(43,0)
+  - TableName: host_summary_by_statement_type
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: statement
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scans
+      ColumnType: bigint(21) unsigned
+  - TableName: innodb_buffer_stats_by_schema
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: text
+    - ColumnName: allocated
+      ColumnType: text
+    - ColumnName: data
+      ColumnType: text
+    - ColumnName: pages
+      ColumnType: bigint(21)
+    - ColumnName: pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: pages_old
+      ColumnType: bigint(21)
+    - ColumnName: rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: innodb_buffer_stats_by_table
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: text
+    - ColumnName: object_name
+      ColumnType: text
+    - ColumnName: allocated
+      ColumnType: text
+    - ColumnName: data
+      ColumnType: text
+    - ColumnName: pages
+      ColumnType: bigint(21)
+    - ColumnName: pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: pages_old
+      ColumnType: bigint(21)
+    - ColumnName: rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: innodb_lock_waits
+    Columns:
+    - ColumnName: wait_started
+      ColumnType: datetime
+    - ColumnName: wait_age
+      ColumnType: time
+    - ColumnName: wait_age_secs
+      ColumnType: bigint(21)
+    - ColumnName: locked_table
+      ColumnType: varchar(1024)
+    - ColumnName: locked_index
+      ColumnType: varchar(1024)
+    - ColumnName: locked_type
+      ColumnType: varchar(32)
+    - ColumnName: waiting_trx_id
+      ColumnType: varchar(18)
+    - ColumnName: waiting_trx_started
+      ColumnType: datetime
+    - ColumnName: waiting_trx_age
+      ColumnType: time
+    - ColumnName: waiting_trx_rows_locked
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_trx_rows_modified
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_pid
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_query
+      ColumnType: longtext
+    - ColumnName: waiting_lock_id
+      ColumnType: varchar(81)
+    - ColumnName: waiting_lock_mode
+      ColumnType: varchar(32)
+    - ColumnName: blocking_trx_id
+      ColumnType: varchar(18)
+    - ColumnName: blocking_pid
+      ColumnType: bigint(21) unsigned
+    - ColumnName: blocking_query
+      ColumnType: longtext
+    - ColumnName: blocking_lock_id
+      ColumnType: varchar(81)
+    - ColumnName: blocking_lock_mode
+      ColumnType: varchar(32)
+    - ColumnName: blocking_trx_started
+      ColumnType: datetime
+    - ColumnName: blocking_trx_age
+      ColumnType: time
+    - ColumnName: blocking_trx_rows_locked
+      ColumnType: bigint(21) unsigned
+    - ColumnName: blocking_trx_rows_modified
+      ColumnType: bigint(21) unsigned
+    - ColumnName: sql_kill_blocking_query
+      ColumnType: varchar(32)
+    - ColumnName: sql_kill_blocking_connection
+      ColumnType: varchar(26)
+  - TableName: io_by_thread_by_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: min_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: processlist_id
+      ColumnType: bigint(20) unsigned
+  - TableName: io_global_by_file_by_bytes
+    Columns:
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: text
+    - ColumnName: avg_read
+      ColumnType: text
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: text
+    - ColumnName: avg_write
+      ColumnType: text
+    - ColumnName: total
+      ColumnType: text
+    - ColumnName: write_pct
+      ColumnType: decimal(26,2)
+  - TableName: io_global_by_file_by_latency
+    Columns:
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: read_latency
+      ColumnType: text
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: write_latency
+      ColumnType: text
+    - ColumnName: count_misc
+      ColumnType: bigint(20) unsigned
+    - ColumnName: misc_latency
+      ColumnType: text
+  - TableName: io_global_by_wait_by_bytes
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: min_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: text
+    - ColumnName: avg_read
+      ColumnType: text
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: text
+    - ColumnName: avg_written
+      ColumnType: text
+    - ColumnName: total_requested
+      ColumnType: text
+  - TableName: io_global_by_wait_by_latency
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: read_latency
+      ColumnType: text
+    - ColumnName: write_latency
+      ColumnType: text
+    - ColumnName: misc_latency
+      ColumnType: text
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: text
+    - ColumnName: avg_read
+      ColumnType: text
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: text
+    - ColumnName: avg_written
+      ColumnType: text
+  - TableName: latest_file_io
+    Columns:
+    - ColumnName: thread
+      ColumnType: varchar(149)
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: latency
+      ColumnType: text
+    - ColumnName: operation
+      ColumnType: varchar(32)
+    - ColumnName: requested
+      ColumnType: text
+  - TableName: memory_by_host_by_current_bytes
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: text
+    - ColumnName: current_avg_alloc
+      ColumnType: text
+    - ColumnName: current_max_alloc
+      ColumnType: text
+    - ColumnName: total_allocated
+      ColumnType: text
+  - TableName: memory_by_thread_by_current_bytes
+    Columns:
+    - ColumnName: thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: text
+    - ColumnName: current_avg_alloc
+      ColumnType: text
+    - ColumnName: current_max_alloc
+      ColumnType: text
+    - ColumnName: total_allocated
+      ColumnType: text
+  - TableName: memory_by_user_by_current_bytes
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: text
+    - ColumnName: current_avg_alloc
+      ColumnType: text
+    - ColumnName: current_max_alloc
+      ColumnType: text
+    - ColumnName: total_allocated
+      ColumnType: text
+  - TableName: memory_global_by_current_bytes
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: current_count
+      ColumnType: bigint(20)
+    - ColumnName: current_alloc
+      ColumnType: text
+    - ColumnName: current_avg_alloc
+      ColumnType: text
+    - ColumnName: high_count
+      ColumnType: bigint(20)
+    - ColumnName: high_alloc
+      ColumnType: text
+    - ColumnName: high_avg_alloc
+      ColumnType: text
+  - TableName: memory_global_total
+    Columns:
+    - ColumnName: total_allocated
+      ColumnType: text
+  - TableName: metrics
+    Columns:
+    - ColumnName: Variable_name
+      ColumnType: varchar(193)
+    - ColumnName: Variable_value
+      ColumnType: text
+    - ColumnName: Type
+      ColumnType: varchar(210)
+    - ColumnName: Enabled
+      ColumnType: varchar(7)
+  - TableName: processlist
+    Columns:
+    - ColumnName: thd_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: conn_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: command
+      ColumnType: varchar(16)
+    - ColumnName: state
+      ColumnType: varchar(64)
+    - ColumnName: time
+      ColumnType: bigint(20)
+    - ColumnName: current_statement
+      ColumnType: longtext
+    - ColumnName: statement_latency
+      ColumnType: text
+    - ColumnName: progress
+      ColumnType: decimal(26,2)
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scan
+      ColumnType: varchar(3)
+    - ColumnName: last_statement
+      ColumnType: longtext
+    - ColumnName: last_statement_latency
+      ColumnType: text
+    - ColumnName: current_memory
+      ColumnType: text
+    - ColumnName: last_wait
+      ColumnType: varchar(128)
+    - ColumnName: last_wait_latency
+      ColumnType: text
+    - ColumnName: source
+      ColumnType: varchar(64)
+    - ColumnName: trx_latency
+      ColumnType: text
+    - ColumnName: trx_state
+      ColumnType: enum('ACTIVE','COMMITTED','ROLLED BACK')
+    - ColumnName: trx_autocommit
+      ColumnType: enum('YES','NO')
+    - ColumnName: pid
+      ColumnType: varchar(1024)
+    - ColumnName: program_name
+      ColumnType: varchar(1024)
+  - TableName: ps_check_lost_instrumentation
+    Columns:
+    - ColumnName: variable_name
+      ColumnType: varchar(64)
+    - ColumnName: variable_value
+      ColumnType: varchar(1024)
+  - TableName: schema_auto_increment_columns
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: column_name
+      ColumnType: varchar(64)
+    - ColumnName: data_type
+      ColumnType: varchar(64)
+    - ColumnName: column_type
+      ColumnType: longtext
+    - ColumnName: is_signed
+      ColumnType: int(1)
+    - ColumnName: is_unsigned
+      ColumnType: int(1)
+    - ColumnName: max_value
+      ColumnType: bigint(21) unsigned
+    - ColumnName: auto_increment
+      ColumnType: bigint(21) unsigned
+    - ColumnName: auto_increment_ratio
+      ColumnType: decimal(25,4) unsigned
+  - TableName: schema_index_statistics
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: index_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_selected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: select_latency
+      ColumnType: text
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: text
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: text
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: text
+  - TableName: schema_object_overview
+    Columns:
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: object_type
+      ColumnType: varchar(64)
+    - ColumnName: count
+      ColumnType: bigint(21)
+  - TableName: schema_redundant_indexes
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: redundant_index_name
+      ColumnType: varchar(64)
+    - ColumnName: redundant_index_columns
+      ColumnType: text
+    - ColumnName: redundant_index_non_unique
+      ColumnType: bigint(1)
+    - ColumnName: dominant_index_name
+      ColumnType: varchar(64)
+    - ColumnName: dominant_index_columns
+      ColumnType: text
+    - ColumnName: dominant_index_non_unique
+      ColumnType: bigint(1)
+    - ColumnName: subpart_exists
+      ColumnType: int(1)
+    - ColumnName: sql_drop_index
+      ColumnType: varchar(223)
+  - TableName: schema_table_lock_waits
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: varchar(64)
+    - ColumnName: object_name
+      ColumnType: varchar(64)
+    - ColumnName: waiting_thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_pid
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_account
+      ColumnType: text
+    - ColumnName: waiting_lock_type
+      ColumnType: varchar(32)
+    - ColumnName: waiting_lock_duration
+      ColumnType: varchar(32)
+    - ColumnName: waiting_query
+      ColumnType: longtext
+    - ColumnName: waiting_query_secs
+      ColumnType: bigint(20)
+    - ColumnName: waiting_query_rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_query_rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_pid
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_account
+      ColumnType: text
+    - ColumnName: blocking_lock_type
+      ColumnType: varchar(32)
+    - ColumnName: blocking_lock_duration
+      ColumnType: varchar(32)
+    - ColumnName: sql_kill_blocking_query
+      ColumnType: varchar(31)
+    - ColumnName: sql_kill_blocking_connection
+      ColumnType: varchar(25)
+  - TableName: schema_table_statistics
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: rows_fetched
+      ColumnType: bigint(20) unsigned
+    - ColumnName: fetch_latency
+      ColumnType: text
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: text
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: text
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: text
+    - ColumnName: io_read_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_read
+      ColumnType: text
+    - ColumnName: io_read_latency
+      ColumnType: text
+    - ColumnName: io_write_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write
+      ColumnType: text
+    - ColumnName: io_write_latency
+      ColumnType: text
+    - ColumnName: io_misc_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_latency
+      ColumnType: text
+  - TableName: schema_table_statistics_with_buffer
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_fetched
+      ColumnType: bigint(20) unsigned
+    - ColumnName: fetch_latency
+      ColumnType: text
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: text
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: text
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: text
+    - ColumnName: io_read_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_read
+      ColumnType: text
+    - ColumnName: io_read_latency
+      ColumnType: text
+    - ColumnName: io_write_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write
+      ColumnType: text
+    - ColumnName: io_write_latency
+      ColumnType: text
+    - ColumnName: io_misc_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_latency
+      ColumnType: text
+    - ColumnName: innodb_buffer_allocated
+      ColumnType: text
+    - ColumnName: innodb_buffer_data
+      ColumnType: text
+    - ColumnName: innodb_buffer_free
+      ColumnType: text
+    - ColumnName: innodb_buffer_pages
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_pages_old
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: schema_tables_with_full_table_scans
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: varchar(64)
+    - ColumnName: object_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_full_scanned
+      ColumnType: bigint(20) unsigned
+    - ColumnName: latency
+      ColumnType: text
+  - TableName: schema_unused_indexes
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: varchar(64)
+    - ColumnName: object_name
+      ColumnType: varchar(64)
+    - ColumnName: index_name
+      ColumnType: varchar(64)
+  - TableName: session
+    Columns:
+    - ColumnName: thd_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: conn_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: command
+      ColumnType: varchar(16)
+    - ColumnName: state
+      ColumnType: varchar(64)
+    - ColumnName: time
+      ColumnType: bigint(20)
+    - ColumnName: current_statement
+      ColumnType: longtext
+    - ColumnName: statement_latency
+      ColumnType: text
+    - ColumnName: progress
+      ColumnType: decimal(26,2)
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scan
+      ColumnType: varchar(3)
+    - ColumnName: last_statement
+      ColumnType: longtext
+    - ColumnName: last_statement_latency
+      ColumnType: text
+    - ColumnName: current_memory
+      ColumnType: text
+    - ColumnName: last_wait
+      ColumnType: varchar(128)
+    - ColumnName: last_wait_latency
+      ColumnType: text
+    - ColumnName: source
+      ColumnType: varchar(64)
+    - ColumnName: trx_latency
+      ColumnType: text
+    - ColumnName: trx_state
+      ColumnType: enum('ACTIVE','COMMITTED','ROLLED BACK')
+    - ColumnName: trx_autocommit
+      ColumnType: enum('YES','NO')
+    - ColumnName: pid
+      ColumnType: varchar(1024)
+    - ColumnName: program_name
+      ColumnType: varchar(1024)
+  - TableName: session_ssl_status
+    Columns:
+    - ColumnName: thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: ssl_version
+      ColumnType: varchar(1024)
+    - ColumnName: ssl_cipher
+      ColumnType: varchar(1024)
+    - ColumnName: ssl_sessions_reused
+      ColumnType: varchar(1024)
+  - TableName: statement_analysis
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: full_scan
+      ColumnType: varchar(1)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: err_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warn_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sorted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: sort_merge_passes
+      ColumnType: bigint(20) unsigned
+    - ColumnName: digest
+      ColumnType: varchar(32)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+  - TableName: statements_with_errors_or_warnings
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: errors
+      ColumnType: bigint(20) unsigned
+    - ColumnName: error_pct
+      ColumnType: decimal(27,4)
+    - ColumnName: warnings
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warning_pct
+      ColumnType: decimal(27,4)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: statements_with_full_table_scans
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: no_index_used_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: no_good_index_used_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: no_index_used_pct
+      ColumnType: decimal(24,0)
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0) unsigned
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: statements_with_runtimes_in_95th_percentile
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: full_scan
+      ColumnType: varchar(1)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: err_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warn_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: statements_with_sorting
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: sort_merge_passes
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_sort_merges
+      ColumnType: decimal(21,0)
+    - ColumnName: sorts_using_scans
+      ColumnType: bigint(20) unsigned
+    - ColumnName: sort_using_range
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sorted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_rows_sorted
+      ColumnType: decimal(21,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: statements_with_temp_tables
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: memory_tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: disk_tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_tmp_tables_per_query
+      ColumnType: decimal(21,0)
+    - ColumnName: tmp_tables_to_disk_pct
+      ColumnType: decimal(24,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: sys_config
+    Columns:
+    - ColumnName: variable
+      ColumnType: varchar(128)
+    - ColumnName: value
+      ColumnType: varchar(128)
+    - ColumnName: set_time
+      ColumnType: timestamp
+    - ColumnName: set_by
+      ColumnType: varchar(128)
+  - TableName: user_summary
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: statements
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_latency
+      ColumnType: text
+    - ColumnName: statement_avg_latency
+      ColumnType: text
+    - ColumnName: table_scans
+      ColumnType: decimal(65,0)
+    - ColumnName: file_ios
+      ColumnType: decimal(64,0)
+    - ColumnName: file_io_latency
+      ColumnType: text
+    - ColumnName: current_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: total_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: unique_hosts
+      ColumnType: bigint(21)
+    - ColumnName: current_memory
+      ColumnType: text
+    - ColumnName: total_memory_allocated
+      ColumnType: text
+  - TableName: user_summary_by_file_io
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: ios
+      ColumnType: decimal(42,0)
+    - ColumnName: io_latency
+      ColumnType: text
+  - TableName: user_summary_by_file_io_type
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: user_summary_by_stages
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+  - TableName: user_summary_by_statement_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_examined
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_affected
+      ColumnType: decimal(42,0)
+    - ColumnName: full_scans
+      ColumnType: decimal(43,0)
+  - TableName: user_summary_by_statement_type
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: statement
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+    - ColumnName: lock_latency
+      ColumnType: text
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scans
+      ColumnType: bigint(21) unsigned
+  - TableName: version
+    Columns:
+    - ColumnName: sys_version
+      ColumnType: varchar(5)
+    - ColumnName: mysql_version
+      ColumnType: varchar(23)
+  - TableName: wait_classes_global_by_avg_latency
+    Columns:
+    - ColumnName: event_class
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: min_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: wait_classes_global_by_latency
+    Columns:
+    - ColumnName: event_class
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: min_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: waits_by_host_by_latency
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: waits_by_user_by_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: waits_global_by_latency
+    Columns:
+    - ColumnName: events
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: text
+    - ColumnName: avg_latency
+      ColumnType: text
+    - ColumnName: max_latency
+      ColumnType: text
+  - TableName: x$host_summary
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: statements
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_latency
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_avg_latency
+      ColumnType: decimal(65,4)
+    - ColumnName: table_scans
+      ColumnType: decimal(65,0)
+    - ColumnName: file_ios
+      ColumnType: decimal(64,0)
+    - ColumnName: file_io_latency
+      ColumnType: decimal(64,0)
+    - ColumnName: current_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: total_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: unique_users
+      ColumnType: bigint(21)
+    - ColumnName: current_memory
+      ColumnType: decimal(63,0)
+    - ColumnName: total_memory_allocated
+      ColumnType: decimal(64,0)
+  - TableName: x$host_summary_by_file_io
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: ios
+      ColumnType: decimal(42,0)
+    - ColumnName: io_latency
+      ColumnType: decimal(42,0)
+  - TableName: x$host_summary_by_file_io_type
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$host_summary_by_stages
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$host_summary_by_statement_latency
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: lock_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_sent
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_examined
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_affected
+      ColumnType: decimal(42,0)
+    - ColumnName: full_scans
+      ColumnType: decimal(43,0)
+  - TableName: x$host_summary_by_statement_type
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: statement
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: lock_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scans
+      ColumnType: bigint(21) unsigned
+  - TableName: x$innodb_buffer_stats_by_schema
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: text
+    - ColumnName: allocated
+      ColumnType: decimal(43,0)
+    - ColumnName: data
+      ColumnType: decimal(43,0)
+    - ColumnName: pages
+      ColumnType: bigint(21)
+    - ColumnName: pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: pages_old
+      ColumnType: bigint(21)
+    - ColumnName: rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: x$innodb_buffer_stats_by_table
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: text
+    - ColumnName: object_name
+      ColumnType: text
+    - ColumnName: allocated
+      ColumnType: decimal(43,0)
+    - ColumnName: data
+      ColumnType: decimal(43,0)
+    - ColumnName: pages
+      ColumnType: bigint(21)
+    - ColumnName: pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: pages_old
+      ColumnType: bigint(21)
+    - ColumnName: rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: x$innodb_lock_waits
+    Columns:
+    - ColumnName: wait_started
+      ColumnType: datetime
+    - ColumnName: wait_age
+      ColumnType: time
+    - ColumnName: wait_age_secs
+      ColumnType: bigint(21)
+    - ColumnName: locked_table
+      ColumnType: varchar(1024)
+    - ColumnName: locked_index
+      ColumnType: varchar(1024)
+    - ColumnName: locked_type
+      ColumnType: varchar(32)
+    - ColumnName: waiting_trx_id
+      ColumnType: varchar(18)
+    - ColumnName: waiting_trx_started
+      ColumnType: datetime
+    - ColumnName: waiting_trx_age
+      ColumnType: time
+    - ColumnName: waiting_trx_rows_locked
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_trx_rows_modified
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_pid
+      ColumnType: bigint(21) unsigned
+    - ColumnName: waiting_query
+      ColumnType: varchar(1024)
+    - ColumnName: waiting_lock_id
+      ColumnType: varchar(81)
+    - ColumnName: waiting_lock_mode
+      ColumnType: varchar(32)
+    - ColumnName: blocking_trx_id
+      ColumnType: varchar(18)
+    - ColumnName: blocking_pid
+      ColumnType: bigint(21) unsigned
+    - ColumnName: blocking_query
+      ColumnType: varchar(1024)
+    - ColumnName: blocking_lock_id
+      ColumnType: varchar(81)
+    - ColumnName: blocking_lock_mode
+      ColumnType: varchar(32)
+    - ColumnName: blocking_trx_started
+      ColumnType: datetime
+    - ColumnName: blocking_trx_age
+      ColumnType: time
+    - ColumnName: blocking_trx_rows_locked
+      ColumnType: bigint(21) unsigned
+    - ColumnName: blocking_trx_rows_modified
+      ColumnType: bigint(21) unsigned
+    - ColumnName: sql_kill_blocking_query
+      ColumnType: varchar(32)
+    - ColumnName: sql_kill_blocking_connection
+      ColumnType: varchar(26)
+  - TableName: x$io_by_thread_by_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: min_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: decimal(24,4)
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: processlist_id
+      ColumnType: bigint(20) unsigned
+  - TableName: x$io_global_by_file_by_bytes
+    Columns:
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: bigint(20)
+    - ColumnName: avg_read
+      ColumnType: decimal(23,4)
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: bigint(20)
+    - ColumnName: avg_write
+      ColumnType: decimal(23,4)
+    - ColumnName: total
+      ColumnType: bigint(21)
+    - ColumnName: write_pct
+      ColumnType: decimal(26,2)
+  - TableName: x$io_global_by_file_by_latency
+    Columns:
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: read_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: write_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: count_misc
+      ColumnType: bigint(20) unsigned
+    - ColumnName: misc_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$io_global_by_wait_by_bytes
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: min_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: bigint(20)
+    - ColumnName: avg_read
+      ColumnType: decimal(23,4)
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: bigint(20)
+    - ColumnName: avg_written
+      ColumnType: decimal(23,4)
+    - ColumnName: total_requested
+      ColumnType: bigint(21)
+  - TableName: x$io_global_by_wait_by_latency
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: read_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: write_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: misc_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: count_read
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_read
+      ColumnType: bigint(20)
+    - ColumnName: avg_read
+      ColumnType: decimal(23,4)
+    - ColumnName: count_write
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_written
+      ColumnType: bigint(20)
+    - ColumnName: avg_written
+      ColumnType: decimal(23,4)
+  - TableName: x$latest_file_io
+    Columns:
+    - ColumnName: thread
+      ColumnType: varchar(149)
+    - ColumnName: file
+      ColumnType: varchar(512)
+    - ColumnName: latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: operation
+      ColumnType: varchar(32)
+    - ColumnName: requested
+      ColumnType: bigint(20)
+  - TableName: x$memory_by_host_by_current_bytes
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: decimal(41,0)
+    - ColumnName: current_avg_alloc
+      ColumnType: decimal(45,4)
+    - ColumnName: current_max_alloc
+      ColumnType: bigint(20)
+    - ColumnName: total_allocated
+      ColumnType: decimal(42,0)
+  - TableName: x$memory_by_thread_by_current_bytes
+    Columns:
+    - ColumnName: thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: decimal(41,0)
+    - ColumnName: current_avg_alloc
+      ColumnType: decimal(45,4)
+    - ColumnName: current_max_alloc
+      ColumnType: bigint(20)
+    - ColumnName: total_allocated
+      ColumnType: decimal(42,0)
+  - TableName: x$memory_by_user_by_current_bytes
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: current_count_used
+      ColumnType: decimal(41,0)
+    - ColumnName: current_allocated
+      ColumnType: decimal(41,0)
+    - ColumnName: current_avg_alloc
+      ColumnType: decimal(45,4)
+    - ColumnName: current_max_alloc
+      ColumnType: bigint(20)
+    - ColumnName: total_allocated
+      ColumnType: decimal(42,0)
+  - TableName: x$memory_global_by_current_bytes
+    Columns:
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: current_count
+      ColumnType: bigint(20)
+    - ColumnName: current_alloc
+      ColumnType: bigint(20)
+    - ColumnName: current_avg_alloc
+      ColumnType: decimal(23,4)
+    - ColumnName: high_count
+      ColumnType: bigint(20)
+    - ColumnName: high_alloc
+      ColumnType: bigint(20)
+    - ColumnName: high_avg_alloc
+      ColumnType: decimal(23,4)
+  - TableName: x$memory_global_total
+    Columns:
+    - ColumnName: total_allocated
+      ColumnType: decimal(41,0)
+  - TableName: x$processlist
+    Columns:
+    - ColumnName: thd_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: conn_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: command
+      ColumnType: varchar(16)
+    - ColumnName: state
+      ColumnType: varchar(64)
+    - ColumnName: time
+      ColumnType: bigint(20)
+    - ColumnName: current_statement
+      ColumnType: longtext
+    - ColumnName: statement_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: progress
+      ColumnType: decimal(26,2)
+    - ColumnName: lock_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scan
+      ColumnType: varchar(3)
+    - ColumnName: last_statement
+      ColumnType: longtext
+    - ColumnName: last_statement_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: current_memory
+      ColumnType: decimal(41,0)
+    - ColumnName: last_wait
+      ColumnType: varchar(128)
+    - ColumnName: last_wait_latency
+      ColumnType: varchar(20)
+    - ColumnName: source
+      ColumnType: varchar(64)
+    - ColumnName: trx_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: trx_state
+      ColumnType: enum('ACTIVE','COMMITTED','ROLLED BACK')
+    - ColumnName: trx_autocommit
+      ColumnType: enum('YES','NO')
+    - ColumnName: pid
+      ColumnType: varchar(1024)
+    - ColumnName: program_name
+      ColumnType: varchar(1024)
+  - TableName: x$ps_digest_95th_percentile_by_avg_us
+    Columns:
+    - ColumnName: avg_us
+      ColumnType: decimal(21,0)
+    - ColumnName: percentile
+      ColumnType: decimal(46,4)
+  - TableName: x$ps_digest_avg_latency_distribution
+    Columns:
+    - ColumnName: cnt
+      ColumnType: bigint(21)
+    - ColumnName: avg_us
+      ColumnType: decimal(21,0)
+  - TableName: x$ps_schema_table_statistics_io
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: count_read
+      ColumnType: decimal(42,0)
+    - ColumnName: sum_number_of_bytes_read
+      ColumnType: decimal(41,0)
+    - ColumnName: sum_timer_read
+      ColumnType: decimal(42,0)
+    - ColumnName: count_write
+      ColumnType: decimal(42,0)
+    - ColumnName: sum_number_of_bytes_write
+      ColumnType: decimal(41,0)
+    - ColumnName: sum_timer_write
+      ColumnType: decimal(42,0)
+    - ColumnName: count_misc
+      ColumnType: decimal(42,0)
+    - ColumnName: sum_timer_misc
+      ColumnType: decimal(42,0)
+  - TableName: x$schema_flattened_keys
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: index_name
+      ColumnType: varchar(64)
+    - ColumnName: non_unique
+      ColumnType: bigint(1)
+    - ColumnName: subpart_exists
+      ColumnType: bigint(1)
+    - ColumnName: index_columns
+      ColumnType: text
+  - TableName: x$schema_index_statistics
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: index_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_selected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: select_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$schema_table_lock_waits
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: varchar(64)
+    - ColumnName: object_name
+      ColumnType: varchar(64)
+    - ColumnName: waiting_thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_pid
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_account
+      ColumnType: text
+    - ColumnName: waiting_lock_type
+      ColumnType: varchar(32)
+    - ColumnName: waiting_lock_duration
+      ColumnType: varchar(32)
+    - ColumnName: waiting_query
+      ColumnType: longtext
+    - ColumnName: waiting_query_secs
+      ColumnType: bigint(20)
+    - ColumnName: waiting_query_rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: waiting_query_rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_thread_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_pid
+      ColumnType: bigint(20) unsigned
+    - ColumnName: blocking_account
+      ColumnType: text
+    - ColumnName: blocking_lock_type
+      ColumnType: varchar(32)
+    - ColumnName: blocking_lock_duration
+      ColumnType: varchar(32)
+    - ColumnName: sql_kill_blocking_query
+      ColumnType: varchar(31)
+    - ColumnName: sql_kill_blocking_connection
+      ColumnType: varchar(25)
+  - TableName: x$schema_table_statistics
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_fetched
+      ColumnType: bigint(20) unsigned
+    - ColumnName: fetch_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: io_read_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_read
+      ColumnType: decimal(41,0)
+    - ColumnName: io_read_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write
+      ColumnType: decimal(41,0)
+    - ColumnName: io_write_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_latency
+      ColumnType: decimal(42,0)
+  - TableName: x$schema_table_statistics_with_buffer
+    Columns:
+    - ColumnName: table_schema
+      ColumnType: varchar(64)
+    - ColumnName: table_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_fetched
+      ColumnType: bigint(20) unsigned
+    - ColumnName: fetch_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_inserted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: insert_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_updated
+      ColumnType: bigint(20) unsigned
+    - ColumnName: update_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_deleted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: delete_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: io_read_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_read
+      ColumnType: decimal(41,0)
+    - ColumnName: io_read_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_write
+      ColumnType: decimal(41,0)
+    - ColumnName: io_write_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_requests
+      ColumnType: decimal(42,0)
+    - ColumnName: io_misc_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: innodb_buffer_allocated
+      ColumnType: decimal(43,0)
+    - ColumnName: innodb_buffer_data
+      ColumnType: decimal(43,0)
+    - ColumnName: innodb_buffer_free
+      ColumnType: decimal(44,0)
+    - ColumnName: innodb_buffer_pages
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_pages_hashed
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_pages_old
+      ColumnType: bigint(21)
+    - ColumnName: innodb_buffer_rows_cached
+      ColumnType: decimal(44,0)
+  - TableName: x$schema_tables_with_full_table_scans
+    Columns:
+    - ColumnName: object_schema
+      ColumnType: varchar(64)
+    - ColumnName: object_name
+      ColumnType: varchar(64)
+    - ColumnName: rows_full_scanned
+      ColumnType: bigint(20) unsigned
+    - ColumnName: latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$session
+    Columns:
+    - ColumnName: thd_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: conn_id
+      ColumnType: bigint(20) unsigned
+    - ColumnName: user
+      ColumnType: varchar(128)
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: command
+      ColumnType: varchar(16)
+    - ColumnName: state
+      ColumnType: varchar(64)
+    - ColumnName: time
+      ColumnType: bigint(20)
+    - ColumnName: current_statement
+      ColumnType: longtext
+    - ColumnName: statement_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: progress
+      ColumnType: decimal(26,2)
+    - ColumnName: lock_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scan
+      ColumnType: varchar(3)
+    - ColumnName: last_statement
+      ColumnType: longtext
+    - ColumnName: last_statement_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: current_memory
+      ColumnType: decimal(41,0)
+    - ColumnName: last_wait
+      ColumnType: varchar(128)
+    - ColumnName: last_wait_latency
+      ColumnType: varchar(20)
+    - ColumnName: source
+      ColumnType: varchar(64)
+    - ColumnName: trx_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: trx_state
+      ColumnType: enum('ACTIVE','COMMITTED','ROLLED BACK')
+    - ColumnName: trx_autocommit
+      ColumnType: enum('YES','NO')
+    - ColumnName: pid
+      ColumnType: varchar(1024)
+    - ColumnName: program_name
+      ColumnType: varchar(1024)
+  - TableName: x$statement_analysis
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: full_scan
+      ColumnType: varchar(1)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: err_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warn_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: lock_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: tmp_disk_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sorted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: sort_merge_passes
+      ColumnType: bigint(20) unsigned
+    - ColumnName: digest
+      ColumnType: varchar(32)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+  - TableName: x$statements_with_errors_or_warnings
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: errors
+      ColumnType: bigint(20) unsigned
+    - ColumnName: error_pct
+      ColumnType: decimal(27,4)
+    - ColumnName: warnings
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warning_pct
+      ColumnType: decimal(27,4)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: x$statements_with_full_table_scans
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: no_index_used_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: no_good_index_used_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: no_index_used_pct
+      ColumnType: decimal(24,0)
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0) unsigned
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: x$statements_with_runtimes_in_95th_percentile
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: full_scan
+      ColumnType: varchar(1)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: err_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: warn_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined_avg
+      ColumnType: decimal(21,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: x$statements_with_sorting
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: sort_merge_passes
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_sort_merges
+      ColumnType: decimal(21,0)
+    - ColumnName: sorts_using_scans
+      ColumnType: bigint(20) unsigned
+    - ColumnName: sort_using_range
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sorted
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_rows_sorted
+      ColumnType: decimal(21,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: x$statements_with_temp_tables
+    Columns:
+    - ColumnName: query
+      ColumnType: longtext
+    - ColumnName: db
+      ColumnType: varchar(64)
+    - ColumnName: exec_count
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: memory_tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: disk_tmp_tables
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_tmp_tables_per_query
+      ColumnType: decimal(21,0)
+    - ColumnName: tmp_tables_to_disk_pct
+      ColumnType: decimal(24,0)
+    - ColumnName: first_seen
+      ColumnType: timestamp
+    - ColumnName: last_seen
+      ColumnType: timestamp
+    - ColumnName: digest
+      ColumnType: varchar(32)
+  - TableName: x$user_summary
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: statements
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_latency
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_avg_latency
+      ColumnType: decimal(65,4)
+    - ColumnName: table_scans
+      ColumnType: decimal(65,0)
+    - ColumnName: file_ios
+      ColumnType: decimal(64,0)
+    - ColumnName: file_io_latency
+      ColumnType: decimal(64,0)
+    - ColumnName: current_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: total_connections
+      ColumnType: decimal(41,0)
+    - ColumnName: unique_hosts
+      ColumnType: bigint(21)
+    - ColumnName: current_memory
+      ColumnType: decimal(63,0)
+    - ColumnName: total_memory_allocated
+      ColumnType: decimal(64,0)
+  - TableName: x$user_summary_by_file_io
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: ios
+      ColumnType: decimal(42,0)
+    - ColumnName: io_latency
+      ColumnType: decimal(42,0)
+  - TableName: x$user_summary_by_file_io_type
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$user_summary_by_stages
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event_name
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$user_summary_by_statement_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: max_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: lock_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_sent
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_examined
+      ColumnType: decimal(42,0)
+    - ColumnName: rows_affected
+      ColumnType: decimal(42,0)
+    - ColumnName: full_scans
+      ColumnType: decimal(43,0)
+  - TableName: x$user_summary_by_statement_type
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: statement
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: lock_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_sent
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_examined
+      ColumnType: bigint(20) unsigned
+    - ColumnName: rows_affected
+      ColumnType: bigint(20) unsigned
+    - ColumnName: full_scans
+      ColumnType: bigint(21) unsigned
+  - TableName: x$wait_classes_global_by_avg_latency
+    Columns:
+    - ColumnName: event_class
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: min_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: decimal(46,4)
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$wait_classes_global_by_latency
+    Columns:
+    - ColumnName: event_class
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: decimal(42,0)
+    - ColumnName: total_latency
+      ColumnType: decimal(42,0)
+    - ColumnName: min_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: decimal(46,4)
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$waits_by_host_by_latency
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: event
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$waits_by_user_by_latency
+    Columns:
+    - ColumnName: user
+      ColumnType: varchar(32)
+    - ColumnName: event
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+  - TableName: x$waits_global_by_latency
+    Columns:
+    - ColumnName: events
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned

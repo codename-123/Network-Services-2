@@ -1,0 +1,80 @@
+# Nmap 7.94SVN scan initiated Tue Apr 15 120110 2025 as nmap -A -vv -p- -T4 -oN nmap_scan.txt 10.10.92.222
+Nmap scan report for 10.10.92.222
+Host is up, received reset ttl 63 (0.27s latency).
+Scanned at 2025-04-15 120111 EDT for 493s
+Not shown 65533 closed tcp ports (reset)
+PORT     STATE SERVICE REASON         VERSION
+22tcp   open  ssh     syn-ack ttl 63 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+ ssh-hostkey 
+   2048 0636562ff0d4a4d2ab6a433ec0f99b2d (RSA)
+ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDARp2fsEfGdkpZ2uvqlphanguxnImgdsVWYrdVW5RbwGsYtaaUtG317kP0AL+p2C5yOIoSZ7Gu9ZXmkDp7NsoNORakEA2liQx28cW9aac2UyvFwj91skg2UklKyPIQDVmxy8n90MrsS6njShjgQV9fpW5AKYToQLbQRFkA4WycCOJgTsHqIOk0nshwTAcjkB6+BkCq4z12em6AuBDLAVN3CflrryG8+7WK6jCrgy1uxitavbgjisLxzQK73pcRRbfZysiKhFi+ILA993pZiRMufaKEbIiLiqhKoO8L2azYubLLFzLdoDSVuItUE5S6pCUd3MZnPcGjS3jvG3l0sB
+   256 30bdbe28bd32dcf6ff28b2575731d9cf (ECDSA)
+ ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGL5ew9bb0sGn6weQ2A2iQHt5Cp5oH5UA+LKbHSmmvJxew3luqjVo7PbvyTqNIW9MLWw1enq8+180yR4sZ4hZBg=
+   256 f23b824a5cd21819891fcd920ac7cf65 (ED25519)
+_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOSrsLKHkaEMJg3PX0y9pMtpfAYlRXTf0z2qSORHoemr
+3306tcp open  mysql   syn-ack ttl 63 MySQL 5.7.29-0ubuntu0.18.04.1
+ mysql-info 
+   Protocol 10
+   Version 5.7.29-0ubuntu0.18.04.1
+   Thread ID 3
+   Capabilities flags 65535
+   Some Capabilities ConnectWithDatabase, SupportsLoadDataLocal, Support41Auth, LongPassword, DontAllowDatabaseTableColumn, LongColumnFlag, FoundRows, SupportsCompression, SwitchToSSLAfterHandshake, SupportsTransactions, IgnoreSpaceBeforeParenthesis, Speaks41ProtocolNew, IgnoreSigpipes, InteractiveClient, ODBCClient, Speaks41ProtocolOld, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+   Status Autocommit
+   Salt mx1ESdLzj2Dx0Cgx13x12v00x06cP
+_  Auth Plugin Name mysql_native_password
+ ssl-cert Subject commonName=MySQL_Server_5.7.29_Auto_Generated_Server_Certificate
+ Issuer commonName=MySQL_Server_5.7.29_Auto_Generated_CA_Certificate
+ Public Key type rsa
+ Public Key bits 2048
+ Signature Algorithm sha256WithRSAEncryption
+ Not valid before 2020-04-23T101327
+ Not valid after  2030-04-21T101327
+ MD5   14e66c5f93ac342e43da5a9248d1df0c
+ SHA-1 125060a135a8b8990da7f0ebfa6d50b9b3cb77a7
+ -----BEGIN CERTIFICATE-----
+ MIIDBzCCAe+gAwIBAgIBAjANBgkqhkiG9w0BAQsFADA8MTowOAYDVQQDDDFNeVNR
+ TF9TZXJ2ZXJfNS43LjI5X0F1dG9fR2VuZXJhdGVkX0NBX0NlcnRpZmljYXRlMB4X
+ DTIwMDQyMzEwMTMyN1oXDTMwMDQyMTEwMTMyN1owQDE+MDwGA1UEAww1TXlTUUxf
+ U2VydmVyXzUuNy4yOV9BdXRvX0dlbmVyYXRlZF9TZXJ2ZXJfQ2VydGlmaWNhdGUw
+ ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDE1jVm401gVggEGGV6+tvS
+ GAp4yoeKEVOFuNPhxpIBVRMASmGahnPxOw5jrQnZkTohBG0QYwZK2a66hFRSEKwu
+ DaJLMbFmdK+7IxxTbm7mqDOPbWRR4C1WXTl26o6HSADqqMJvGlnWxyLoehixBDw
+ 91OukKEBbCig2n54fp4zrRBjbeCRxa3OPKbOwpOtpg7GM7chWspDr3vqfIH8tY1
+ ldQ1dUgLaDNFIgIUvWDDPU9WVZro6fzHhrKkpdm40ra2UXLVO6NtGoWXlAjzK4J3
+ rDUn95OaI2A74pwNhL0dyd62X6XYIEIwh6dNsDrhUeM34aLdAfAM2a9+PYFexKjT
+ AgMBAAGjEDAOMAwGA1UdEwEBwQCMAAwDQYJKoZIhvcNAQELBQADggEBACFlFTXG
+ s67mpgvMB26+aVSAURjXN+Neb0pxKZ6Rk0vDk0igRENCvccF9SIrZzIwTI8+kU1
+ VV+e5WebNUENm+IS+AJphwyOoHHnBUYcGFdSfqMhHRNQkRDMI2YpiDCtXssEieH
+ K3ZA3xbEo7owQpM6QEQwxlgLt1R8FNh2xe63tTtnRFPwi0V+HG6fv4Ko0Jl2ghan
+ e4FPTDbIYPUPbM0CeyUyVUCKN5xgSvbFqBuOOvm53uF2cu3GaMqeJVTDmJfkk+
+ 8MBPVmfZwElgIJymG17ydTNH0hBlw8dM4ZSvjmKvKZI7ZUd0HPqNS3njQjG0G8s
+ wsdeP5hVa8afyBo=
+_-----END CERTIFICATE-----
+_ssl-date TLS randomness does not represent time
+No exact OS matches for host (If you know what OS is running on it, see httpsnmap.orgsubmit ).
+TCPIP fingerprint
+OSSCAN(V=7.94SVN%E=4%D=415%OT=22%CT=1%CU=44504%PV=Y%DS=2%DC=T%G=Y%TM=67FE
+OS84B4%P=x86_64-pc-linux-gnu)SEQ(SP=102%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)
+OSSEQ(SP=103%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)OPS(O1=M509ST11NW7%O2=M509S
+OST11NW7%O3=M509NNT11NW7%O4=M509ST11NW7%O5=M509ST11NW7%O6=M509ST11)WIN(W1=
+OSF4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W6=F4B3)ECN(R=Y%DF=Y%T=40%W=F507%O=
+OSM509NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)
+OST4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S
+OS+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=
+OSY%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G
+OS%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess 31.359 days (since Sat Mar 15 033251 2025)
+Network Distance 2 hops
+TCP Sequence Prediction Difficulty=259 (Good luck!)
+IP ID Sequence Generation All zeros
+Service Info OS Linux; CPE cpeolinuxlinux_kernel
+
+TRACEROUTE (using port 110tcp)
+HOP RTT       ADDRESS
+1   272.94 ms 10.21.0.1
+2   273.18 ms 10.10.92.222
+
+Read data files from usrbin..sharenmap
+OS and Service detection performed. Please report any incorrect results at httpsnmap.orgsubmit .
+# Nmap done at Tue Apr 15 120924 2025 -- 1 IP address (1 host up) scanned in 493.94 seconds
