@@ -34,8 +34,8 @@ nmap -A -vv -T4 -p- 10.10.155.201 -oN nmap_scan.txt
 | 22/tcp | ssh | SSH 서비스 (OpenSSH 7.6p1) |
 | 111/tcp | rpcbind | RPC 서비스 |
 | 2049/tcp | nfs_acl | NFS 파일 공유 서비스 |
-| 43623/tcp, 60307/tcp, 60371/tcp | mountd | NFS 마운트 관련 데몬 |
-| 45449/tcp | nlockmgr | 파일 잠금 서비스 |
+| 34721/tcp, 48035/tcp, 57911/tcp | mountd | NFS 마운트 관련 데몬 |
+| 32923/tcp | nlockmgr | 파일 잠금 서비스 |
 
 - 상세 스캔 결과: [nmap_scan.txt](./nmap_scan.txt) 파일 참조
 
