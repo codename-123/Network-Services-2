@@ -52,7 +52,7 @@ nmap -A -vv -T4 -p- 10.10.155.201 -oN nmap_scan.txt
 showmount -e 10.10.155.201
 ```
 
-![NFS 공유 디렉토리 확인](.screenshots/showmount_exports.png)
+![NFS 공유 디렉토리 확인](./screenshots/showmount_exports.png)
 
 ---
 
