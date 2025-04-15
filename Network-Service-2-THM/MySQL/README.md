@@ -40,7 +40,7 @@ nmap -A -vv -p- -T4 10.10.92.222 -oN nmap_scan.txt
 
 ### 3.1 MySQL 직접 접속 확인
 
-- 설명: 문제에서 제공된 아이디 비밀번호를 통해 기본 계정 정보를 이용해 DB에 직접 접속 가능한지 테스트 했습니다. 인증에 성공하면 내부 탐색이 가능합니다.
+- 설명: 문제에서 제공된 사용자 계정과 패스워드를 통해 기본 계정 정보를 이용해 DB에 직접 접속 가능한지 테스트 했습니다. 인증에 성공하면 내부 탐색이 가능합니다.
 
 ```bash
 mysql -h 10.10.92.222 -u root -p
@@ -53,7 +53,7 @@ mysql -h 10.10.92.222 -u root -p
 
 ### 3.2 Metasploit - MySQL 버전 확인
 
-- 설명: Metasploit의 `mysql_sql` 모듈을 통해 MySQL 버전 정보를 확인 하였습니다. 취약점 존재 여부 판단에 활용을 위해 이 모듈을 사용했습니다.
+- 설명: msfconsole 명령어로 `Metasploit Framework`를 사용하여 사용자 계정과 패스워드를 이용하여 `mysql_sql` 모듈을 통해 MySQL 버전 정보를 확인 하였습니다. 취약점 존재 여부 판단에 활용을 위해 이 모듈을 사용했습니다.
 
 ```bash
 use auxiliary/admin/mysql/mysql_sql
